@@ -1,12 +1,13 @@
 {
-  "name": "http2-tests",
+  "name": "http2-spdy-test",
   "version": "1.0.0",
-  "description": "",
+  "description": "Test with HTTP/2 and Spdy(https://github.com/spdy-http2/node-spdy)",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Giovanni Mansueto <topogigiovanni@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.4",
