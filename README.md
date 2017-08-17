@@ -12,3 +12,13 @@ A small application using [express](https://github.com/expressjs/express), [node
     npm start
 
 Access the link [https://localhost:8090/](https://localhost:8090/) and ignore the security warnings.
+
+----
+## Links
+- [http://blog.caelum.com.br/http2-server-push-na-pratica/](http://blog.caelum.com.br/http2-server-push-na-pratica/)
+
+- [http://blog.caelum.com.br/as-fantasticas-novidades-do-http-2-0-e-do-spdy/](http://blog.caelum.com.br/as-fantasticas-novidades-do-http-2-0-e-do-spdy/)
+
+- [https://tools.keycdn.com/http2-test](https://tools.keycdn.com/http2-test)
+
+- [https://ma.ttias.be/view-http-spdy-http2-protocol-google-chrome/](https://ma.ttias.be/view-http-spdy-http2-protocol-google-chrome/)
