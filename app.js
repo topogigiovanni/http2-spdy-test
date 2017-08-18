@@ -1,32 +1,39 @@
-var express = require('express');
-var fs = require('fs');
-var spdy = require('spdy');
+const express = require('express');
+const fs = require('fs');
+const path = require('path');
+const spdy = require('spdy');
 
-var app = express();
+const app = express();
 
 const PORT = 8090;
 
-app.get('/', function (req, res) {
-	res.sendFile('./app.html', { root : __dirname})
-})
+app.get('/', (req, res) => {
+	res.sendFile('./app.html', {
+		root: __dirname
+	});
+});
 
-app.get('/images/:id', function (req, res) {
-	res.sendFile('./images/' + req.params.id, { root : __dirname})
-})
+app.get('/site', (req, res) => {
+	//res.headers['Link'] = '</styles/easy.css>; rel=preload; as=style';
+	res.setHeader('Link', '</styles/easy.css>; rel=preload; as=style');
+	res.sendFile('./site.html', {
+		root: __dirname
+	});
+});
+
+app.get('/images/:id', (req, res) => {
+	res.sendFile('./public/images/' + req.params.id, {
+		root: __dirname
+	});
+});
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 var options = {
-  key: fs.readFileSync('localhost.key'),
-  //cert: fs.readFileSync('ssl.crt')
-  cert: fs.readFileSync('localhost.crt')
+	key: fs.readFileSync('localhost.key'),
+	//cert: fs.readFileSync('ssl.crt')
+	cert: fs.readFileSync('localhost.crt')
 };
-
-/*
-	// https://stackoverflow.com/questions/8169999/how-can-i-create-a-self-signed-cert-for-localhost
-	
-	# Use 'localhost' for the 'Common name'
-	openssl req -x509 -sha256 -nodes -newkey rsa:2048 -days 365 -keyout localhost.key -out localhost.crt
-
-*/
 
 spdy.createServer(options, app).listen(PORT, () => {
 	console.log('Listen port ' + PORT)
